@@ -1,0 +1,11 @@
+- include settings.js from ui in output so that other "plugins" could use them instead of shit like "css bridge"
+- create svg symbols file and <use> them instead of icon fontface
+  - https://github.com/jkphl/gulp-svg-sprite
+  - https://github.com/jonathantneal/svg4everybody
+- components/Content
+  - move config to settings.js
+  - generate `withSpacing` flag code based on breakpoints
+- objects/FlexEmbed
+  - generate modifiers based on config from settings.js
+- lint js and css
+- automaticaly import libraries in output html files

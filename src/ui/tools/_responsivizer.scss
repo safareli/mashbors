@@ -1,0 +1,100 @@
+@function media-max-sizer($base){
+  @return $base - 0.01em
+}
+
+@function media-min-sizer($base){
+  @return $base
+}
+
+@mixin media-max($breakpoint){
+  @media (max-width: media-max-sizer(breakpoint($breakpoint))) {
+    @content;
+  }
+}
+
+@mixin media-min($breakpoint){
+  @media (min-width: media-min-sizer(breakpoint($breakpoint))) {
+    @content;
+  }
+}
+
+@mixin media-range($breakpoint-min, $breakpoint-max){
+  @media (min-width: media-min-sizer(breakpoint($breakpoint-min))) and (max-width: media-max-sizer(breakpoint($breakpoint-max))) {
+    @content;
+  }
+}
+
+@mixin responsivize($selector, $responsive: true, $suffix:''){
+  #{$selector}#{$suffix} {
+    @content;
+  }
+  @if $responsive {
+    @each $brake in breakpoint-keys() {
+      @include media-min($brake) {
+        #{$selector}\@#{$brake}#{$suffix} {
+          @content;
+        }
+      }
+    }
+  }
+
+}
+
+@mixin utilsGenerator($settings){
+  $settings: map-merge((responsive: false, seperator: "-", prefix: '.u-', suffix: '', important:true), $settings);
+  @each $name, $props in map-get($settings, classes) {
+    @each $valueName, $value in map-get($settings, values) {
+      $seperator: map-get($settings, seperator);
+      @if $valueName == ''{
+        $seperator: ''
+      }
+      @include responsivize(#{map-get($settings, prefix)}#{$name}#{$seperator}#{$valueName}, $responsive:map-get($settings, responsive), $suffix:map-get($settings, suffix)) {
+        @each $prop in $props {
+          @if(map-get($settings, important)){
+            #{$prop}: $value !important;
+          } @else{
+            #{$prop}: $value;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+@mixin print {
+  @media print {
+      @content
+  }
+}
+
+@mixin retina {
+  @media
+    only screen and (-webkit-min-device-pixel-ratio: 2),
+    only screen and (min--moz-device-pixel-ratio: 2),
+    only screen and (-o-min-device-pixel-ratio: 2/1),
+    only screen and (min-device-pixel-ratio: 2),
+    only screen and (min-resolution: 192dpi),
+    only screen and (min-resolution: 2dppx) {
+    @content;
+  }
+}
+
+
+// @include utilsGenerator((
+//   classes:(
+//     ml: (margin-left),
+//     mr: (margin-right),
+//     mt: (margin-top),
+//     mb: (margin-bottom),
+//     mh: (margin-left, margin-right),
+//     mv: (margin-bottom, margin-top)
+//   ),
+//   values:(
+//     a: auto,
+//     s: 5px,
+//     m: 10px,
+//     l: 20px
+//   ),
+//   responsive: true
+// ))

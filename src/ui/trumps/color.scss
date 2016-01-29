@@ -1,0 +1,18 @@
+@include utilsGenerator((
+  classes:(
+    color: (color),
+    background: (background)
+  ),
+  values: map-merge((inherit:inherit), color()),
+  responsive: true
+));
+
+@include utilsGenerator((
+  classes:(
+    colorHover: (color),
+    backgroundHover: (background)
+  ),
+  values: map-merge((inherit:inherit), color()),
+  responsive: true,
+  suffix: ':hover'
+));

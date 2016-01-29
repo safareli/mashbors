@@ -1,0 +1,55 @@
+{
+  "name": "mashbors",
+  "version": "0.0.0",
+  "description": "front-end project boilerplate for building static sites",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:safareli/mashbors.git"
+  },
+  "author": "Irakli Safareli <i.safareli@gmail.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "6.0.3",
+    "babel": "5.8.23",
+    "browser-sync": "2.9.3",
+    "chalk": "1.1.1",
+    "color": "0.10.1",
+    "css-mqpacker": "4.0.0",
+    "del": "2.0.2",
+    "event-stream": "3.3.1",
+    "glob-stream": "5.0.0",
+    "gulp": "3.9.0",
+    "gulp-changed-in-place": "git://github.com/safareli/gulp-changed-in-place.git#b714f30ba74d3301c0c7dd39fb7c586de0eecb3b",
+    "gulp-concat": "2.6.0",
+    "gulp-notify": "2.2.0",
+    "gulp-plumber": "1.0.1",
+    "gulp-postcss": "6.0.0",
+    "gulp-prettify": "0.3.0",
+    "gulp-sass": "2.0.4",
+    "gulp-util": "3.0.6",
+    "gulp-watch": "4.3.5",
+    "handlebars": "4.0.2",
+    "map-stream": "0.0.6",
+    "minimatch": "2.0.10",
+    "node-sass-json-importer": "git://github.com/safareli/node-sass-json-importer.git#944623a697844eb1535c5fabf5ef9c6e4b141304",
+    "perfectionist": "2.1.1",
+    "postcss": "5.0.6",
+    "pretty-hrtime": "1.0.1",
+    "ramda": "0.17.1",
+    "react": "0.14.0-rc1",
+    "react-dom": "0.14.0-rc1",
+    "require-dir": "0.3.0",
+    "run-sequence": "1.1.2",
+    "stream-combiner": "0.2.2",
+    "through2": "2.0.0",
+    "vinyl": "0.5.3"
+    "brace-expansion": "1.1.1",
+    "brand-colors-json": "1.0.1",
+    "gulp-header": "1.7.1",
+    "gulp-sass-inheritance": "git://github.com/safareli/gulp-sass-inheritance.git#2dad51187d6e9abf1704cffb4ed1f558a352b912",
+    "yargs": "3.30.0"
+  }
+}

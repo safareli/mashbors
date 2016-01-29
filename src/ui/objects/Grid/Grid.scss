@@ -1,0 +1,223 @@
+/* in case of bugs see https://github.com/philipwalton/flexbugs */
+.Grid {
+  display: flex;
+}
+.Grid--inline {
+  display: inline-flex;
+}
+
+/*
+ * @note be carefull with this
+ * @see https://github.com/philipwalton/flexbugs/issues/86
+ */
+
+
+@include responsivize('.Grid--wrap') {
+  flex-wrap: wrap;
+}
+@include responsivize('.Grid--nowrap') {
+  flex-wrap: nowrap;
+}
+
+.Grid--minsizeauto * {
+  // https://github.com/kenwheeler/slick/issues/982
+  // http://stackoverflow.com/questions/26895349/how-can-i-get-ff-33-x-flexbox-behavior-in-ff-34-x
+  // https://bugzilla.mozilla.org/show_bug.cgi?id=1043520
+  min-height: 0;
+  min-width: 0;
+}
+
+/**
+ *  dont allow browser to hide Grid-block
+ *  @see http://codepen.io/safareli/full/OyWjzd/
+ *
+ * 1. Set `max-width:100%` to prevent
+ *    overflow.
+ * 2. Set `box-sizing:border-box` if
+ *    needed to account for padding
+ *    and border size.
+ */
+.Grid-block {
+  flex: 0 0 0.01%;
+  min-width: 1px;
+  min-height: 1px;
+  box-sizing: border-box; /* [2] */
+  max-width: 100%; /* [1] */
+}
+
+// .Grid-block--fillChild{
+//   display: flex;
+//   & > * {
+//     flex:1 1 auto;
+//   }
+// }
+
+
+@include responsivize('.Grid-block--fit'){
+  flex: 0 0 auto;
+}
+
+@include responsivize('.Grid--reverse'){
+  flex-direction: row-reverse;
+}
+// row | row-reverse
+@include utilsGenerator((
+  classes:( direction: (flex-direction)),
+  values: (
+    Row         : row,
+    RowReverse  : row-reverse,
+    Col         : column,
+    ColReverse  : column-reverse
+  ),
+  prefix: '.Grid--',
+  seperator: '',
+  responsive: true,
+  important: false
+));
+
+
+/**
+ * Alignment per grid @for cross axis(vertical)
+ * @default stretch
+ * @see https://cdn.css-tricks.com/wp-content/uploads/2014/05/align-items.svg
+ */
+@include utilsGenerator((
+  classes:( align: (align-items)),
+  values: (
+    Start    : flex-start,
+    End      : flex-end,
+    Center   : center,
+    Baseline : baseline,
+    Stretch  : stretch
+  ),
+  prefix: '.Grid--',
+  seperator: '',
+  responsive: true,
+  important: false
+));
+
+
+/**
+ * space per grid @for main axis(horizontal)
+ * @default flex-start
+ * @see https://cdn.css-tricks.com/wp-content/uploads/2013/04/justify-content.svg
+ */
+@include utilsGenerator((
+  classes:( space: (justify-content)),
+  values: (
+    Start   : flex-start,     //align start
+    End     : flex-end,       //align end
+    Center  : center,         //align center
+    Between : space-between,  //space between
+    Around  : space-around    //space around
+  ),
+  prefix: '.Grid--',
+  seperator: '',
+  responsive: true,
+  important: false
+));
+
+/**
+ * aligne grid rows
+ * @default flex-start
+ * @see https://cdn.css-tricks.com/wp-content/uploads/2013/04/align-content.svg
+ */
+@include utilsGenerator((
+  classes:( content: (align-content)),
+  values: (
+    Start   : flex-start,     //align start
+    End     : flex-end,       //align end
+    Center  : center,         //align center
+    Between : space-between,  //space between
+    Around  : space-around    //space around
+  ),
+
+  prefix: '.Grid--',
+  seperator: '',
+  responsive: true,
+  important: false
+));
+
+
+/**
+ * Alignment per block
+ * same as .Grid--align* but for block
+ * @see https://cdn.css-tricks.com/wp-content/uploads/2014/05/align-self.svg
+ */
+@include utilsGenerator((
+  classes:( align: (align-self)),
+  values: (
+    Start     : flex-start,
+    End       : flex-end,
+    Center    : center,
+    Baseline  : baseline,
+    Stretch   : stretch
+  ),
+  prefix: '.Grid-block--',
+  seperator: '',
+  responsive: true,
+  important: false
+));
+
+
+/**
+ * Order of block
+ * @see https://cdn.css-tricks.com/wp-content/uploads/2013/04/order-2.svg
+ */
+@include utilsGenerator((
+  classes:( order: (order)),
+  values: (
+    Start1  : -3,
+    Start2  : -2,
+    Start3  : -1,
+    Default :  0,
+    End1    :  3,
+    End2    :  2,
+    End3    :  1
+  ),
+  prefix: '.Grid-block--',
+  seperator: '',
+  responsive: true,
+  important: false
+));
+
+
+/**
+ * Block weight in row
+ * @ISSUE curently no way to combine u-size* and Grid-block-weight* classes
+ * @TODO:
+ *   reserch flex box and try to solv this issue might use
+ *   flex-basis and max-width for sizing @see http://flexboxgrid.com/
+ *
+ * @see https://cdn.css-tricks.com/wp-content/uploads/2014/05/flex-grow.svg
+ */
+@include utilsGenerator((
+  classes:( weight: (flex-grow,flex-shrink)),
+  values: (
+    1 : 1,
+    2 : 2,
+    3 : 3,
+    4 : 4,
+    5 : 5,
+    6 : 6,
+    7 : 7,
+    8 : 8
+  ),
+  prefix: '.Grid-block--',
+  seperator: '',
+  responsive: true,
+  important: false
+));
+
+
+/* With gutters */
+@each $name, $value in grid(gutter) {
+  @include responsivize('.Grid--gutter#{$name}'){
+    margin-left: -1 * $value;
+    margin-top: -1 * $value;
+    & > .Grid-block {
+      padding-left: 1 * $value;
+      padding-top: 1 * $value;
+    }
+  }
+}

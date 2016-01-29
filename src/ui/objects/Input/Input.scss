@@ -1,0 +1,25 @@
+//http://codepen.io/safareli/pen/QjvLVE?editors=110
+.Input{
+
+  // &::placeholder {
+  //   color: inherit;
+  // }
+
+  &:focus {
+    outline: none;
+  }
+ 
+  border-bottom:solid border(width,s) color(whiteDarker);
+
+  &:focus {
+    color: color(grayDark);
+    border-color: color(grayLight);
+  }
+}
+
+ 
+
+.Input--required::placeholder:after{
+  color: color(danger);
+  content:" *";
+}

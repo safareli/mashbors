@@ -1,0 +1,28 @@
+@mixin size-generator($props, $prefix, $suffix, $columns, $seperator) {
+  #{$prefix}1#{$seperator}1#{$suffix}, #{$prefix}#{$columns}#{$seperator}#{$columns}#{$suffix}{
+    @each $prop in $props {
+      #{$prop}: 100% !important;
+    }
+  }
+  #{$prefix}Auto#{$suffix}{
+    @each $prop in $props {
+      #{$prop}: auto !important;
+    }
+  }
+  @for $column from 1 to $columns {
+    @if $column != $columns {
+      #{$prefix}#{$column}#{$seperator}#{$columns}#{$suffix}{
+        @each $prop in $props {
+          #{$prop}: percentage($column / $columns) !important;
+        }
+      }
+      @for $division from 1 to $columns {
+        @if $column % $division == 0 and $columns % $division == 0 {
+          #{$prefix}#{$column / $division}#{$seperator}#{$columns / $division}#{$suffix}{
+            @extend #{$prefix}#{$column}#{$seperator}#{$columns}#{$suffix};
+          }
+        }
+      }
+    }
+  }
+}

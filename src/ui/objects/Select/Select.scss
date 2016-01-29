@@ -1,0 +1,23 @@
+.Select{
+  border-bottom:solid border(width,s) color(whiteDarker);
+  position: relative;
+  &:focus {
+    outline: none;
+    color: color(grayDark);
+    border-color: color(grayLight);
+  }
+}
+  .Select-icon{
+    position:absolute;
+    top: 50%;
+    right:0;
+    transform: translateY(-50%);
+    pointer-events:none;
+  }
+  .Select-select{
+    -webkit-appearance: none;
+    border-radius: 0;
+    background: transparent;
+    width: 100%;
+    border: 0;
+  }

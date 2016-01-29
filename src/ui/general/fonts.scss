@@ -1,0 +1,3 @@
+@each $face in font(faces){
+  @include font-face($face,$path: '#{env(root)}../assets/fonts/')
+}

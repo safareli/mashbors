@@ -1,0 +1,16 @@
+@function getter($options){
+  $keys: map-get($options, keys);
+  $data: map-get($options, data);
+  $name: map-get($options, name);
+  @if length($keys) == 0 {
+    @return $data;
+  } @else if map-has-nested-key($data, $keys...) {
+    @return map-deep-get($data, $keys...);
+  } @else {
+    @warn "Unknown `#{$keys}` in `$#{name}`";
+    @return null;
+  }
+}
+
+
+@import 'settings.js?getter=getter&withKeys';

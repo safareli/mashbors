@@ -1,0 +1,22 @@
+.Textarea{
+  width: 100%;
+  max-width: 100%;
+  // &::placeholder {
+  //   color: color(grayDark);
+  // }
+  
+  border:solid border(width,s) color(whiteDarker);
+
+
+  &:focus {
+    outline: none;
+    border-color: color(grayLight);
+  }
+}
+
+
+
+.Textarea--required::placeholder:after{
+  color: color(danger);
+  content:" *";
+}

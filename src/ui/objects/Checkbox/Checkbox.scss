@@ -1,0 +1,46 @@
+.Checkbox{
+  cursor: pointer;
+  font-size: font(size,xs);
+  width:1em;
+  height:1em;
+  outline: none;
+  position: relative;
+  &:before{
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border: border(width,s) color(gray) solid;
+    background-color:color(whitish);
+  }
+  &:after{
+    position: absolute;
+    display: block;
+    bottom: 0;
+    left: 0;
+    width: 1em;
+    height: 1em;
+    content: "";
+    color:color(brand);
+    font-weight: bold;
+    text-align: center;
+    font-size: 1.2em;
+    line-height: 1em;
+  }
+  &:checked:after{
+    content: '✔';
+  }
+  &:disabled{
+    opacity: 0.3;
+  }
+  &:not(:disabled):hover:before{
+    border-color: color(grayDarker)
+  }
+  &:not(:disabled):hover:after{
+    color: color(brandInvert)
+  }
+  
+}
