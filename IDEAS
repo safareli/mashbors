@@ -1,0 +1,102 @@
+https://github.com/corysimmons/typographic
+https://github.com/corysimmons/boy
+https://github.com/corysimmons/lost
+
+
+http://www.abdullahyahya.com/2011/10/convert-photoshop-font-point-pt-to-pixels-px/
+https://forums.adobe.com/thread/1327944
+
+
+https://babeljs.io/docs/setup/#node
+https://github.com/kriasoft/babel-starter-kit
+https://github.com/kriasoft/react-starter-kit
+https://github.com/mhart/react-server-example
+https://github.com/koistya/react-static-boilerplate
+
+
+
+github.com/inuitcss
+github.com/suitcss
+github.com/bettercss
+csswizardry.com/2015/03/more-transparent-ui-code-with-namespaces/
+speakerdeck.com/dafed/managing-css-projects-with-itcss?slide=50
+github.com/itcss/itcss-netmag/tree/master/css
+http://simplaio.github.io/rucksack/
+
+/build
+  styles.css
+
+  (generated from src)
+
+  /styleguide
+    (generated from styles/**/*.demo.jsx)
+    https://github.com/alexlande/react-style-guide
+    https://github.com/jmfurlott/react-styleguide
+
+
+/src
+  /styles
+    (index.css)
+    /Tools
+      *.js postcss custom plugins
+      pass block of code to function
+      https://github.com/pascalduez/postcss-map
+      https://github.com/andyjansson/postcss-functions
+      https://github.com/outpunk/postcss-each
+      http://benfrain.com/breaking-up-with-sass-postcss/
+
+      http://ponyfoo.com/articles/es6-proxies-in-depth
+      https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Proxy
+    /Settings
+    /Generic
+      normalise.css
+      reset.css
+    /Basic
+      basic.css
+
+    /Objects
+      /{ObjectName}
+        {ObjectName}.jsx
+        {ObjectName}.css
+        {ObjectName}.demo.jsx
+        {ObjectName}.data.js
+    /Components
+      /{ComponentName}
+        {ComponentName}.jsx
+        {ComponentName}.css
+        {ComponentName}.demo.jsx
+        {ComponentName}.data.js
+    /Trumps
+      print.css
+      debug
+      colors
+      text
+        case
+        wrap
+        elipsize
+        aligne
+        font
+          family
+          weight
+          size
+        aligne
+      border
+      display
+      layout
+        float
+        clearfix
+      list
+        reset
+        horizontal
+      margin
+      padding
+      position
+        stick
+        Center
+        Middle
+        Stretch
+      size? should be box object for thet
+
+
+https://www.npmjs.com/package/js-yaml
+http://nodeca.github.io/js-yaml/
